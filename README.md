@@ -7,6 +7,10 @@ This project uses only **System.Drawing**  to generate a SVG output, which could
 
 [![NuGet](https://img.shields.io/nuget/v/NetCharts.svg?label=NuGet)](https://www.nuget.org/packages/NetCharts/)
 
+## Gallery
+ 
+![gallery](Documentation/images/gallery.png)
+
 ## Roadmap
 *Take note that this project is a **WIP** and currently only line charts are supported*
 
