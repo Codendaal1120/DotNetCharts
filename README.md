@@ -5,7 +5,7 @@ A server side SVG chart library.
 
 This project uses only **System.Drawing**  to generate a SVG output, which could be embedded into html, styled with CSS and then embedded into a PDF.
 
-[![NuGet]([https://www.nuget.org/packages/NetCharts](https://www.nuget.org/packages/NetCharts))]([https://www.nuget.org/packages/NetCharts](https://www.nuget.org/packages/NetCharts)
+[![NuGet](https://img.shields.io/nuget/v/Microcharts.svg?label=NuGet)](https://www.nuget.org/packages/NetCharts/)
 
 ## Roadmap
 *Take note that this project is a **WIP** and currently only line charts are supported*
@@ -19,22 +19,24 @@ This project uses only **System.Drawing**  to generate a SVG output, which could
 ## How to?
 You can generate a chart with default options using the following code :
 
-    var series = new[]
-    {
-    	new ChartSeries("Series1", new[] {10.0, 0, 20, 25, 5, 60, 30 })
-    };
-    
-    var labels = new[] { "One", "Two", "Three", "Four", "Five", "Six", "Seven" };
-    
-    var chart = new LineChart(series , labels )
-    {
-	    Height = 500,
-	    Width = 800,
-    };
-	
-	var xml = chart.ToSvg();
+```csharp
+var series = new[]
+{
+    new ChartSeries("Series1", new[] {10.0, 0, 20, 25, 5, 60, 30 })
+};
 
- ![This will produce](Documentation/images/default_chart.png)
+var labels = new[] { "One", "Two", "Three", "Four", "Five", "Six", "Seven" };
+
+var chart = new LineChart(series , labels )
+{
+    Height = 500,
+    Width = 800,
+};
+
+var xml = chart.ToSvg();
+```
+
+ ![This will produce](Documentation/images/default_chart.PNG)
 
 Consult the [Customization guide][https://github.com/Codendaal1120/NetCharts/wiki/Chart-customization-guide](https://github.com/Codendaal1120/NetCharts/wiki/Chart-customization-guide) for information on customization options.
 
