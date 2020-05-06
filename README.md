@@ -5,7 +5,7 @@ A server side SVG chart library.
 
 This project uses only **System.Drawing**  to generate a SVG output, which could be embedded into html, styled with CSS and then embedded into a PDF.
 
-[![NuGet](https://img.shields.io/nuget/v/Microcharts.svg?label=NuGet)](https://www.nuget.org/packages/NetCharts/)
+[![NuGet](https://img.shields.io/nuget/v/NetCharts.svg?label=NuGet)](https://www.nuget.org/packages/NetCharts/)
 
 ## Roadmap
 *Take note that this project is a **WIP** and currently only line charts are supported*
