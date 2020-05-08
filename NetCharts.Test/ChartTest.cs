@@ -18,7 +18,7 @@ namespace NetCharts.Test
         {
             PrintTestDetails();
             var xml = chart.ToSvg();
-            //WriteFileOut(xml, TestContext.CurrentContext.Test.Name);
+            WriteFileOut(xml, TestContext.CurrentContext.Test.Name);
             return xml;
         }
 
