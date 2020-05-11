@@ -9,7 +9,7 @@ This project uses only **System.Drawing**  to generate a SVG output, which could
 
 ## Gallery
  
-![gallery](Documentation/images/gallery.png)
+![gallery](https://raw.githubusercontent.com/Codendaal1120/NetCharts/master/Documentation/images/gallery.png)
 
 ## Roadmap
 *Take note that this project is a **WIP** and currently only line charts are supported*
