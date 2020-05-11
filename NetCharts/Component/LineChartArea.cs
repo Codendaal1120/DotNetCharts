@@ -14,6 +14,7 @@ namespace NetCharts.Component
         /// Style for the vertical grid lines (for X axis)
         /// </summary>
         public GridLineStyle XGridLineStyle { get; } = new GridLineStyle();
+
         /// <summary>
         /// Style for the horizontal grid lines (for Y axis)
         /// </summary>

@@ -12,26 +12,6 @@ namespace NetCharts
     {
         public override ChartType Type => ChartType.Line;
 
-        /// <summary>
-        /// Enables/Disables data points on the default embedded styles.
-        /// Custom styles are not affected by this property.
-        /// </summary>
-        public bool DrawDefaultDataPoints
-        {
-            get => ChartArea.DrawDefaultDataPointMarkers;
-            set => ChartArea.DrawDefaultDataPointMarkers = value;
-        }
-
-        /// <summary>
-        /// Enables/Disables data point labels on the default embedded styles.
-        /// Custom styles are not affected by this property.
-        /// </summary>
-        public bool DrawDefaultDataPointLabels
-        {
-            get => ChartArea.DrawDefaultDataPointLabels;
-            set => ChartArea.DrawDefaultDataPointLabels = value;
-        }
-
         public LineType LineType
         {
             get => ChartArea.LineType;
@@ -45,7 +25,14 @@ namespace NetCharts
         internal ScaleInfo XScale { get; } = new ScaleInfo();
         internal ScaleInfo YScale { get; } = new ScaleInfo();
 
-        public LineChart(ChartSeries[] series, string[] labels) : base(series, labels)
+        /// <summary>
+        /// Create a new instance of a Line chart 
+        /// </summary>
+        /// <param name="series">Series of the chart</param>
+        /// <param name="labels">X Axis labels</param>
+        /// <param name="drawDefaultDataMarkers">Enables/Disables data points on the default embedded styles. Custom styles are not affected by this property.</param>
+        /// <param name="drawDefaultDataPointLabels">Enables/Disables data point labels on the default embedded styles. Custom styles are not affected by this property.</param>
+        public LineChart(ChartSeries[] series, string[] labels, bool drawDefaultDataMarkers = false, bool drawDefaultDataPointLabels = false) : base(series, labels)
         {
             if (series == null) throw new ArgumentNullException(nameof(series));
             var maxSeriesCount = series.Max(s => s.DataValues.Length);
@@ -54,7 +41,11 @@ namespace NetCharts
                 throw new ArgumentException($"Invalid number of labels, max number of DataValues cannot exceed label count");
             }
 
-            ChartArea = new LineChartArea(series);
+            ChartArea = new LineChartArea(series)
+            {
+                DrawDefaultDataPointLabels = drawDefaultDataPointLabels,
+                DrawDefaultDataPointMarkers = drawDefaultDataMarkers
+            };
             XAxis = new XAxis() { StartOnMajor = false };
             YAxis = new YAxis( series.Max(s => s.DataValues.Max(v => v.ToString(CultureInfo.InvariantCulture).Length)) + 1 );
             Height = 300;

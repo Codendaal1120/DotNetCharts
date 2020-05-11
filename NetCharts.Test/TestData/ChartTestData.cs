@@ -41,7 +41,7 @@ namespace NetCharts.Test.TestData
         {
             var testData = GetTestDataSet1();
 
-            var chart = new LineChart(testData.series, testData.labels)
+            var chart = new LineChart(testData.series, testData.labels, drawDefaultDataPointLabels: true, drawDefaultDataMarkers: true)
             {
                 Height = 500,
                 Width = 800,
@@ -49,13 +49,11 @@ namespace NetCharts.Test.TestData
                 Legend = { LegendIcon = LegendIcon.Circle, LabelStyle = { }},
                 XAxis =
                 {
-                    
                     MinorTickStyle = { StrokeWidth = 0.25, Length = 3 },
                     MajorTickStyle = { StrokeWidth = 0.5, Length = 5 }
                 },
                 YAxis =
                 {
-                    
                     MinorTickStyle = { StrokeWidth = 0.25, Length = 3 },
                     MajorTickStyle = { StrokeWidth = 0.5, Length = 5 }
                 },
@@ -63,11 +61,10 @@ namespace NetCharts.Test.TestData
                 {
                     ChartAreaStyle = { StrokeWidth = 0.5 },
                     XGridLineStyle = {  MajorLineStyle = { StrokeWidth = 0.5 }, MinorLineStyle = { StrokeWidth = 0.25 }},
-                    YGridLineStyle = { MajorLineStyle = { StrokeWidth = 0.5 }, MinorLineStyle = { StrokeWidth = 0.25 }}
+                    YGridLineStyle = { MajorLineStyle = { StrokeWidth = 0.5 }, MinorLineStyle = { StrokeWidth = 0.25 }},
+                   
                 },
                 Title = { Text = "Test Case 1",  },
-                DrawDefaultDataPoints = true,
-                DrawDefaultDataPointLabels = true,
                 DrawDebug = false
             };
 
@@ -99,6 +96,28 @@ namespace NetCharts.Test.TestData
             {
                 Height = 500,
                 Width = 800,
+                ChartArea = { SeriesStyles = new[]
+                {
+                    new LineSeriesStyle()
+                    {
+                        LabelStyle =
+                        {
+                            Fill = "black", 
+                            Size = 3
+                        },
+                        DataPointLabelPosition = Position.Bottom,
+                        ElementStyle =
+                        {
+                            Fill = "black", 
+                            StrokeColor = "green"
+                        },
+                        MarkerStyle = new MarkerStyle()
+                        {
+                            StrokeColor = "black",
+                            Radius = 3
+                        }
+                    }, 
+                } }
             };
 
             var testCase = new TestCaseData(chart);
@@ -525,7 +544,7 @@ namespace NetCharts.Test.TestData
                     9,
                     0.0,
                     1
-                })
+                }) {  }
             };
 
             var labels = new[]

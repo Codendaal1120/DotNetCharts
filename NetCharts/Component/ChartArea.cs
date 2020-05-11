@@ -15,14 +15,17 @@ namespace NetCharts.Component
         public double BottomRightY { get; private set; }
         public double Width => BottomRightX - TopLeftX;
         public double Height => BottomRightY - TopLeftY;
+
         /// <summary>
         /// ChartAreaStyle for the chart area, not the contents (series)
         /// </summary>
         public ElementStyle ChartAreaStyle { get; } = new ElementStyle() { StrokeWidth = 0 };
+
         /// <summary>
         /// Collection of styles to assign to series
         /// </summary>
         public IReadOnlyCollection<LineSeriesStyle> SeriesStyles { get; set; } 
+
         public IReadOnlyCollection<ChartSeries> Series { get; }
 
         private int _lastStyleIndex = -1;
