@@ -9,7 +9,7 @@ This project uses only **System.Drawing**  to generate a SVG output, which could
 
 ## Gallery
  
-![gallery](Documentation/images/gallery.png)
+![gallery](https://raw.githubusercontent.com/Codendaal1120/NetCharts/master/Documentation/images/gallery.png)
 
 ## Roadmap
 *Take note that this project is a **WIP** and currently only line charts are supported*
@@ -40,7 +40,7 @@ var chart = new LineChart(series , labels )
 var xml = chart.ToSvg();
 ```
 
- ![This will produce](Documentation/images/default_chart.PNG)
+ ![This will produce](https://raw.githubusercontent.com/Codendaal1120/NetCharts/master/Documentation/images/default_chart.PNG)
 
 Consult the [Customization guide](https://github.com/Codendaal1120/NetCharts/wiki/Chart-customization-guide) for information on customization options.
 
