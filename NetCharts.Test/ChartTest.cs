@@ -32,6 +32,16 @@ namespace NetCharts.Test
             Assert.That((ActualValueDelegate<object>) TestDelegate, Throws.TypeOf<ArgumentNullException>());
         }
 
+        //private static IEnumerable<TestCaseData> CanCreateChartFromJsonSource => ChartTestData.CreateChartFromJson;
+
+        //[TestCaseSource(nameof(CanNotCreateLineCharts))]
+        //public void CanCreateChartFromJson(ChartSeries[] series, string[] labels)
+        //{
+        //    PrintTestDetails();
+        //    object TestDelegate() => new LineChart(series, labels);
+        //    Assert.That((ActualValueDelegate<object>)TestDelegate, Throws.TypeOf<ArgumentNullException>());
+        //}
+
         #endregion
 
         private void WriteFileOut(string xml, string name)

@@ -7,3 +7,4 @@
 .vs
 obj
 Debug
+/NetCharts.Test/bin/Release/netcoreapp3.1

@@ -66,6 +66,8 @@ namespace NetCharts
             return svg.ToXml();
         }
 
+        public abstract string ExportData();
+
         protected IEnumerable<string> GetLabels()
         {
             return Labels;

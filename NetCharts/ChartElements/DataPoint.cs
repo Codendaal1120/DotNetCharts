@@ -1,4 +1,6 @@
-﻿namespace NetCharts.ChartElements
+﻿using System;
+
+namespace NetCharts.ChartElements
 {
     /// <summary>
     /// Represents a data point on a chart
@@ -12,8 +14,8 @@
 
         public DataPoint(double x, double y, string xValue = null, string yValue = null)
         {
-            X = x;
-            Y = y;
+            X = Math.Round(x, 2);
+            Y = Math.Round(y, 2);
             YValue = yValue;
             XValue = xValue;
         }

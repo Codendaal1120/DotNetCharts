@@ -2,17 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <Authors>Christiaan Odendaal</Authors>
     <Company>Odendigital</Company>
     <Description>A server side SVG chart library.</Description>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Codendaal1120/NetCharts</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>SVG, chart, AspNetCore, AspNet</PackageTags>
-    <AssemblyVersion>0.0.3.0</AssemblyVersion>
-    <FileVersion>0.0.2.0</FileVersion>
+    <AssemblyVersion>0.0.4.0</AssemblyVersion>
+    <FileVersion>0.0.4.0</FileVersion>
+    <PackageReleaseNotes>0.0.4 : added support for partial data sets
+</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

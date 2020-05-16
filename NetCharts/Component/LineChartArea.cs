@@ -199,8 +199,9 @@ namespace NetCharts.Component
                     fillLines = GetFillLines(series);
                     //add connected path
                 }
-                
-                elements.Add(new Path(null, series.DataPoints[0], lines, fillLines, series.Style.ElementStyle, new[] { "series", $"series-{series.SeriesName}" }));
+
+                var startPoint = series.DataPoints.First(d => d != null);
+                elements.Add(new Path(null, startPoint, lines, fillLines, series.Style.ElementStyle, new[] { "series", $"series-{series.SeriesName}" }));
                 elements.AddRange(GetDataPointMarker(series, series.Style as LineSeriesStyle, lines));
             }
 

@@ -11,7 +11,7 @@ namespace NetCharts.Component
     {
         protected override AxisType Type => AxisType.YAxis;
 
-        private int _maxLabelSize { get; }
+        private int _maxLabelSize;
 
         /// <summary>
         /// The dynamic size of the axis width

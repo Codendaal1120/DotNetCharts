@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.Json;
 using NetCharts.ChartElements;
 using NetCharts.Component;
 using NetCharts.Svg;
@@ -47,9 +48,15 @@ namespace NetCharts
                 DrawDefaultDataPointMarkers = drawDefaultDataMarkers
             };
             XAxis = new XAxis() { StartOnMajor = false };
-            YAxis = new YAxis( series.Max(s => s.DataValues.Max(v => v.ToString(CultureInfo.InvariantCulture).Length)) + 1 );
+            YAxis = new YAxis( series.Max(s => s.DataValues.Max(v => v?.ToString(CultureInfo.InvariantCulture).Length ?? 0)) + 1 );
             Height = 300;
             Width = 400;
+        }
+
+        public override string ExportData()
+        {
+            var data = new { series = ChartArea.Series, labels = Labels };
+            return JsonSerializer.Serialize(data);
         }
 
         /// <summary>
@@ -111,7 +118,7 @@ namespace NetCharts
 
             return elements.ToArray();
         }
-        
+
         internal override ScaleInfo GetScaleInfo(AxisType type)
         {
             return type == AxisType.XAxis
@@ -143,7 +150,7 @@ namespace NetCharts
             var aveYRound = (int)ave;
             var aveUpper = (int)Math.Pow(10, (aveYRound.ToString(CultureInfo.InvariantCulture).Trim().Length));
             
-            YScale.Max = ChartArea.Series.SelectMany(s => s.DataValues).Max(p => p);
+            YScale.Max = ChartArea.Series.SelectMany(s => s.DataValues).Max(p => p ?? 0);
             YScale.MajorInterval = (int)(aveUpper * 0.10);
             if ((YScale.Max / YScale.MajorInterval) > 10)
             {
