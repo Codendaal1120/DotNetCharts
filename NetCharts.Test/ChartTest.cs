@@ -42,7 +42,7 @@ namespace NetCharts.Test
                 //XAxis = { LabelStyle = { Size = 12, StrokeColor = "black" } },
                 YAxis = { LabelStyle = { Size = 11, Font = "Algerian" } }
             };
-            WriteFileOut(chart.ToSvg(), TestContext.CurrentContext.Test.Name);
+            //WriteFileOut(chart.ToSvg(), TestContext.CurrentContext.Test.Name);
         }
 
         #endregion
