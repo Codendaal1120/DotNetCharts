@@ -56,6 +56,7 @@ namespace NetCharts.Svg
             writer.WriteAttributeString("text-anchor", Anchor.ToString());
             writer.WriteAttributeString("dominant-baseline", DominantBaseline.ToString());
             writer.WriteAttributeString("font-size", $"{_style.Size.ToString(CultureInfo.InvariantCulture)}px");
+            writer.WriteAttributeString("font-family", $"{_style.Font}");
             writer.WriteValue(Label);
             writer.WriteEndElement();
         }

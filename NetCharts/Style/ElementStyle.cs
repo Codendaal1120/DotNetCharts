@@ -13,9 +13,14 @@ namespace NetCharts.Style
         public string Fill { get; set; } = "none";
 
         /// <summary>
-        /// Fill color
+        /// Fill Opacity 1 == fully visible
         /// </summary>
         public double FillOpacity { get; set; } = 1;
+
+        /// <summary>
+        /// Stroke Opacity 1 == fully visible
+        /// </summary>
+        public double StrokeOpacity { get; set; } = 1;
 
         /// <summary>
         /// Stroke color
@@ -45,6 +50,7 @@ namespace NetCharts.Style
                 { "stroke", StrokeColor },
                 { "stroke-width", StrokeWidth.ToString(CultureInfo.InvariantCulture) },
                 { "fill-opacity", FillOpacity.ToString(CultureInfo.InvariantCulture) },
+                { "stroke-opacity", StrokeOpacity.ToString(CultureInfo.InvariantCulture) },
             };
 
         internal ElementStyle()

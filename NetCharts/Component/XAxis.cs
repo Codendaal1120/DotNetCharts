@@ -83,7 +83,9 @@ namespace NetCharts.Component
                 if (!isMinor && LabelStyle.Draw)
                 {
                     var label = labels.ElementAt(majorCount);
-                    elements.Add(new Text($"{label}", xPos, yPos, TextAnchor.Middle, DominantBaseline.Auto, LabelStyle, new[] { $"{Type}-label", "axis-label" }));
+                    var labelX = xPos - ((label.Length * LabelStyle.WidthPixels) / 1.5);
+                    //split label into 2 lines
+                    elements.Add(new Text($"{label}", labelX, yPos, TextAnchor.Start, DominantBaseline.Auto, LabelStyle, new[] { $"{Type}-label", "axis-label" }));
                 }
 
                 i += scale.MinorInterval;

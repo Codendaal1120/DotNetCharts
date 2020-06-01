@@ -8,5 +8,5 @@
   &lt;ProjectFile&gt;6D30010B-DCF3-468B-A2A4-A18077D648FB/f:ChartTest.cs&lt;/ProjectFile&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7fb8b9d7_002D367c_002D46f4_002D847c_002D144c7f12823d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CanCreateLineChart" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="F:\Development\Projects\Project Apollo\Release Source\NetCharts\NetCharts.Test" Presentation="&amp;lt;NetCharts.Test&amp;gt;" /&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

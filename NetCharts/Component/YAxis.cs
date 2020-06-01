@@ -11,7 +11,7 @@ namespace NetCharts.Component
     {
         protected override AxisType Type => AxisType.YAxis;
 
-        private int _maxLabelSize;
+        private readonly int _maxLabelSize;
 
         /// <summary>
         /// The dynamic size of the axis width
@@ -76,8 +76,9 @@ namespace NetCharts.Component
                 if (!isMinor && LabelStyle.Draw)
                 {
                     var label = labels.ElementAt(majorCount);
-                    //elements are spaced with the width LabelStyle.Size
-                    elements.Add(new Text($"{label}", xPos - LabelStyle.Size, yPos, TextAnchor.End, DominantBaseline.Middle, LabelStyle, new []{ $"{Type}-label", "axis-label" }));
+                    var labelX = xPos - (label.Length * LabelStyle.WidthPixels) - LabelStyle.Size;
+                    var labelY = yPos + (LabelStyle.HeightPixels / 3.1);
+                    elements.Add(new Text($"{label}", labelX, labelY, TextAnchor.Start, DominantBaseline.Auto, LabelStyle, new []{ $"{Type}-label", "axis-label" }));
                 }
 
                 i -= scale.MinorInterval;
@@ -93,7 +94,7 @@ namespace NetCharts.Component
             {
                 elements.Add(new Path(
                     $"{Type}--baseline",
-                    new DataPoint(staticPos, dynamicOffset),
+                    new DataPoint(staticPos, (scale.Max * scale.Scale) + dynamicOffset),
                     new DataPoint(staticPos, lastYPos),
                     BaseLineStyle));
             }

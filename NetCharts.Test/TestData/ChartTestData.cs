@@ -98,28 +98,42 @@ namespace NetCharts.Test.TestData
             {
                 Height = 500,
                 Width = 800,
-                ChartArea = { SeriesStyles = new[]
-                {
-                    new LineSeriesStyle()
+                ChartArea = { 
+                    SeriesStyles = new[]
                     {
-                        LabelStyle =
+                        new LineSeriesStyle()
                         {
-                            Fill = "black", 
-                            Size = 3
-                        },
-                        DataPointLabelPosition = Position.Bottom,
-                        ElementStyle =
-                        {
-                            Fill = "none", 
-                            StrokeColor = "green"
-                        },
-                        MarkerStyle = new MarkerStyle()
-                        {
-                            StrokeColor = "black",
-                            Radius = 3
-                        }
-                    }, 
-                } }
+                            LabelStyle =
+                            {
+                                Fill = "black", 
+                                Size = 3
+                            },
+                            DataPointLabelPosition = Position.Bottom,
+                            ElementStyle =
+                            {
+                                Fill = "none", 
+                                StrokeColor = "green"
+                            },
+                            MarkerStyle = new MarkerStyle()
+                            {
+                                StrokeColor = "black",
+                                Radius = 3
+                            }
+                        }, 
+                    }
+                },
+                XAxis =
+                {
+                    LabelStyle = { Size = 16, Fill = "black" },
+                    MajorTickStyle = { StrokeWidth = 1, Length = 5, StrokeColor = "green" },
+                    BaseLineStyle = { StrokeWidth = 1, StrokeColor = "green" }
+                },
+                YAxis =
+                {
+                    LabelStyle = { Size = 16, Fill = "black" },
+                    MajorTickStyle = { StrokeWidth = 1, Length = 5, StrokeColor = "green" },
+                    BaseLineStyle = { StrokeWidth = 1, StrokeColor = "green" }
+                },
             };
 
             var testCase = new TestCaseData(chart);
@@ -494,7 +508,7 @@ namespace NetCharts.Test.TestData
                 yield return LineChartDataWithNullSeries();
             }
         }
-
+        
         /// <summary>
         /// Test case 10
         /// </summary>
@@ -522,6 +536,50 @@ namespace NetCharts.Test.TestData
         }
 
         #endregion
+
+        #region Debug
+
+        public static IEnumerable<TestCaseData> DebugTestData
+        {
+            get
+            {
+                yield return DebugXAxisLabels();
+                yield return DebugPartialSeriesJoining();
+            }
+        }
+
+        /// <summary>
+        /// Debug: 1 Axis Labels not centered
+        /// </summary>
+        private static TestCaseData DebugXAxisLabels()
+        {
+            var series = JsonConvert.DeserializeObject<ChartSeries[]>("[ { 'seriesName': 'Skynet', 'dataValues': [ null, null, null, null, null, null, null, null, 82.0, 55.0, 128.0, 3.0, 139.0, 90.0 ], 'dataPoints': [], 'style': null, 'color': null } ]");
+            var labels = JsonConvert.DeserializeObject<string[]>("[ 'Mar 2019', 'Apr 2019', 'May 2019', 'Jun 2019', 'Jul 2019', 'Aug 2019', 'Sep 2019', 'Oct 2019', 'Nov 2019', 'Dec 2019', 'Jan 2020', 'Feb 2020', 'Mar 2020', 'Apr 2020' ]");
+
+            var testCase = new TestCaseData(series, labels);
+
+            testCase.SetName("Debug - 1 Axis Labels not centered");
+            testCase.SetDescription("Debug - 1 Axis Labels not centered");
+            return testCase;
+        }
+
+        /// <summary>
+        /// Debug: Partial series joining
+        /// </summary>
+        private static TestCaseData DebugPartialSeriesJoining()
+        {
+            var series = JsonConvert.DeserializeObject<ChartSeries[]>("[ { 'seriesName': '2019-2020', 'dataValues': [ null, null, null, 82.0, 55.0, 128.0, 3.0, 139.0, 90.0, null, null, null ], 'dataPoints': [], 'style': null, 'color': null }, { 'seriesName': 'Forecast usage', 'dataValues': [ null, null, null, null, null, null, null, null, 90.0, 77.33, 102.11, 89.81 ], 'dataPoints': [], 'style': null, 'color': null } ]");
+            var labels = JsonConvert.DeserializeObject<string[]>("[ 'Aug 2019', 'Sep 2019', 'Oct 2019', 'Nov 2019', 'Dec 2019', 'Jan 2020', 'Feb 2020', 'Mar 2020', 'Apr 2020', 'May 2020', 'Jun 2020', 'Jul 2020' ]");
+
+            var testCase = new TestCaseData(series, labels);
+
+            testCase.SetName("Debug 2 - 2 partial series");
+            testCase.SetDescription("Debug 2 - 2 partial series needs to appear like a single line, but the first series adds 0 instead of nulls at the end");
+            return testCase;
+        }
+
+        #endregion Debug
+
 
         /// <summary>
         /// 3 chart series

@@ -85,7 +85,8 @@ namespace NetCharts.Component
                     if (LabelStyle.Draw)
                     {
                         //compensate for icon
-                        elements.Add(new Text($"{series.SeriesName}", xPos, yPos, TextAnchor.Start, DominantBaseline.Middle, LabelStyle));
+                        var labelY = yPos + (LabelStyle.HeightPixels / 4.5);
+                        elements.Add(new Text($"{series.SeriesName}", xPos, labelY, TextAnchor.Start, DominantBaseline.Auto, LabelStyle));
                         inc += LabelStyle.WidthPixels * series.SeriesName.Length;
                         iconOffsetY = LabelStyle.WidthPixels * 0.2;
                     }

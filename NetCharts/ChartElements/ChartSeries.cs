@@ -41,6 +41,13 @@ namespace NetCharts.ChartElements
                     dataStarted = true;
                 }
 
+                //look forward. if the null count is equal to the number of items remaining, it means the rest are nulls
+                if (dataStarted)
+                {
+                    var nullCount = DataValues.Skip(i -1).Count(v => v == null);
+                    dataStarted = nullCount != DataValues.Length - i;
+                }
+
                 if (!dataStarted) continue;
 
                 if (!DataValues[i].HasValue)

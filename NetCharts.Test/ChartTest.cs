@@ -32,15 +32,18 @@ namespace NetCharts.Test
             Assert.That((ActualValueDelegate<object>) TestDelegate, Throws.TypeOf<ArgumentNullException>());
         }
 
-        //private static IEnumerable<TestCaseData> CanCreateChartFromJsonSource => ChartTestData.CreateChartFromJson;
+        private static IEnumerable<TestCaseData> CanCreateChartFromJsonSource => ChartTestData.DebugTestData;
 
-        //[TestCaseSource(nameof(CanNotCreateLineCharts))]
-        //public void CanCreateChartFromJson(ChartSeries[] series, string[] labels)
-        //{
-        //    PrintTestDetails();
-        //    object TestDelegate() => new LineChart(series, labels);
-        //    Assert.That((ActualValueDelegate<object>)TestDelegate, Throws.TypeOf<ArgumentNullException>());
-        //}
+        [TestCaseSource(nameof(CanCreateChartFromJsonSource))]
+        public void CanCreateChartFromJson(ChartSeries[] series, string[] labels)
+        {
+            PrintTestDetails();
+            var chart = new LineChart(series, labels) { Height = 600, Width = 1000, 
+                //XAxis = { LabelStyle = { Size = 12, StrokeColor = "black" } },
+                YAxis = { LabelStyle = { Size = 11, Font = "Algerian" } }
+            };
+            WriteFileOut(chart.ToSvg(), TestContext.CurrentContext.Test.Name);
+        }
 
         #endregion
 

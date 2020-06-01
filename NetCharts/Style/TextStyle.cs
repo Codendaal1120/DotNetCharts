@@ -10,6 +10,8 @@ namespace NetCharts.Style
         /// </summary>
         public new bool Draw => Fill != "none" && Size > 0;
 
+        public string Font = "Arial";
+
         public new int StrokeWidth => 0;
 
         /// <summary>
