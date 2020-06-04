@@ -2,6 +2,6 @@
 {
     public class SeriesStyle
     {
-        public ElementStyle ElementStyle { get; } = new ElementStyle();
+        public ElementStyle ElementStyle { get; protected set; } = new ElementStyle();
     }
 }

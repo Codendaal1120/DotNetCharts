@@ -38,7 +38,7 @@ namespace NetCharts.Component
             Series = series.ToArray();
         }
 
-        private LineSeriesStyle GetNextSeriesStyle()
+        protected LineSeriesStyle GetNextSeriesStyle()
         {
             _lastStyleIndex++;
 

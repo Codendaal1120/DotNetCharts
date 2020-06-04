@@ -147,17 +147,30 @@ namespace NetCharts
         private void CalculateYScaleInfo()
         {
             var ave = ChartArea.Series.SelectMany(s => s.DataValues).Average(p => p);
-            var aveYRound = (int)ave;
+            var aveYRound = Math.Abs(ave.Value);
             var aveUpper = (int)Math.Pow(10, (aveYRound.ToString(CultureInfo.InvariantCulture).Trim().Length));
             
             YScale.Max = ChartArea.Series.SelectMany(s => s.DataValues).Max(p => p ?? 0);
             YScale.MajorInterval = (int)(aveUpper * 0.10);
+
+            //if small scale, set to min 5
+            if (YScale.Max < 5)
+            {
+                YScale.Max = 5;
+                YScale.MajorInterval = 1;
+                YScale.MinorInterval = 0.5;
+            }
+
+            //large scale, increase the interval
             if ((YScale.Max / YScale.MajorInterval) > 10)
             {
-                //large scale, increase the interval
                 YScale.MajorInterval *= 2;
             }
-            YScale.MinorInterval = (int)(YScale.MajorInterval / 10);
+
+            YScale.MinorInterval = YScale.MinorInterval <= 0 
+                ? Math.Abs(YScale.MajorInterval / 10) 
+                : YScale.MinorInterval;
+
             YScale.Max = ((int)(YScale.Max / YScale.MajorInterval) * YScale.MajorInterval) + YScale.MajorInterval;
             YScale.Max += YScale.StartOnMajor ? YScale.MinorInterval : 0;
 

@@ -18,7 +18,7 @@ namespace NetCharts.Test
         {
             PrintTestDetails();
             var xml = chart.ToSvg();
-            WriteFileOut(xml, TestContext.CurrentContext.Test.Name);
+            //WriteFileOut(xml, TestContext.CurrentContext.Test.Name);
             return xml;
         }
 
@@ -39,10 +39,11 @@ namespace NetCharts.Test
         {
             PrintTestDetails();
             var chart = new LineChart(series, labels) { Height = 600, Width = 1000, 
-                //XAxis = { LabelStyle = { Size = 12, StrokeColor = "black" } },
                 YAxis = { LabelStyle = { Size = 11, Font = "Algerian" } }
             };
+            var svg = chart.ToSvg();
             //WriteFileOut(chart.ToSvg(), TestContext.CurrentContext.Test.Name);
+            Assert.IsNotNull(svg);
         }
 
         #endregion

@@ -2,7 +2,7 @@
 {
     public class LineSeriesStyle : SeriesStyle
     {
-        public bool IsDefaultStyle { get; }
+        public bool IsDefaultStyle { get; } = false;
         public TextStyle LabelStyle { get; } = new TextStyle() { Size = 0 };
         public bool DrawLabel => LabelStyle.Draw;
         public Position DataPointLabelPosition { get; set; } = Position.Top;
@@ -22,6 +22,11 @@
         
         public LineSeriesStyle() : this(false)
         {
+        }
+
+        internal LineSeriesStyle(SeriesStyle style)
+        {
+            ElementStyle = style.ElementStyle;
         }
 
         internal LineSeriesStyle(bool isDefault = true)

@@ -179,7 +179,7 @@ namespace NetCharts.Component
                 }
 
                 elements.Add(new Path(null, series.DataPoints[0], curves, fillLines, series.Style.ElementStyle, new []{ "series", $"series-{series.SeriesName}" }));
-                elements.AddRange(GetDataPointMarker(series, series.Style as LineSeriesStyle, curves));
+                elements.AddRange(GetDataPointMarker(series, GetSeriesStyle(series), curves));
             }
 
             return elements;
@@ -202,10 +202,22 @@ namespace NetCharts.Component
 
                 var startPoint = series.DataPoints.First(d => d != null);
                 elements.Add(new Path(null, startPoint, lines, fillLines, series.Style.ElementStyle, new[] { "series", $"series-{series.SeriesName}" }));
-                elements.AddRange(GetDataPointMarker(series, series.Style as LineSeriesStyle, lines));
+                elements.AddRange(GetDataPointMarker(series, GetSeriesStyle(series), lines));
             }
 
             return elements;
+        }
+
+        private LineSeriesStyle GetSeriesStyle(ChartSeries series)
+        {
+            if (series.Style is LineSeriesStyle lineStyle)
+            {
+                return lineStyle;
+            }
+
+            return series.Style == null 
+                ? GetNextSeriesStyle() 
+                : new LineSeriesStyle(series.Style);
         }
 
         private IEnumerable<Element> GetDataPointMarker(ChartSeries series, LineSeriesStyle style, IReadOnlyCollection<ChartLine> lines)
