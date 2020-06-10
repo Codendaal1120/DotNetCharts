@@ -13,7 +13,9 @@ namespace NetCharts
         /// Enabled to activate debug markings. Disabled by default.
         /// </summary>
         public bool DrawDebug { get; set; } = false;
-        
+
+        public string BackgroundColor { get; set; }
+
         public double Width { get; set; }
         public double Height { get; set; }
         public double PaddingLeft { get; set; } = 15;
@@ -58,10 +60,18 @@ namespace NetCharts
 
             var svg = new Root(Height, Width);
             var group = new Group();
-           
+            var background = CreateBackground();
+            
+            if (background != null)
+            {
+                svg.Elements.Add(background);
+            }
+
             group.Elements.AddRange(GetSvgElements());
             group.Elements.AddRange(GetDebugElements());
+
             svg.Elements.Add(group);
+
 
             return svg.ToXml();
         }
@@ -83,14 +93,14 @@ namespace NetCharts
             var black100 = true;
             var count100 = 0;
             var blackStyle = new ElementStyle() {Fill = "black", StrokeColor = "black"};
-            var whiteStyle = new ElementStyle() {Fill = "grey", StrokeColor = "grey" };
+            var whiteStyle = new ElementStyle() {Fill = "grey", StrokeColor = "grey"};
 
             //X bar
             for (var i = 0; i < Width;)
             {
                 var style = black10 ? blackStyle : whiteStyle;
                 list.Add(new Rectangle(5, 10, i, Height - 10, style));
-               
+
                 black10 = !black10;
 
                 if (count100 == 0)
@@ -142,5 +152,14 @@ namespace NetCharts
             if (Width < 100) throw new ArgumentException("Width cannot be less than 100");
         }
 
+        private Rectangle CreateBackground()
+        {
+            if (!string.IsNullOrWhiteSpace(BackgroundColor) || BackgroundColor?.ToLower() == "transparent")
+            {
+                return new Rectangle(Height, Width, 0, 0, new ElementStyle() { Fill = BackgroundColor, StrokeColor = "none" });
+            }
+
+            return null;
+        }
     }
 }

@@ -147,7 +147,13 @@ namespace NetCharts
         private void CalculateYScaleInfo()
         {
             var ave = ChartArea.Series.SelectMany(s => s.DataValues).Average(p => p);
-            var aveYRound = Math.Abs(ave.Value);
+
+            if (!ave.HasValue || ave.Value <= 0)
+            {
+                throw new InvalidOperationException($"Cannot draw chart if the average range is 0");
+            }
+
+            var aveYRound = Math.Round(ave.Value, 0);
             var aveUpper = (int)Math.Pow(10, (aveYRound.ToString(CultureInfo.InvariantCulture).Trim().Length));
             
             YScale.Max = ChartArea.Series.SelectMany(s => s.DataValues).Max(p => p ?? 0);
@@ -168,7 +174,7 @@ namespace NetCharts
             }
 
             YScale.MinorInterval = YScale.MinorInterval <= 0 
-                ? Math.Abs(YScale.MajorInterval / 10) 
+                ? Math.Round(YScale.MajorInterval / 10, 0) 
                 : YScale.MinorInterval;
 
             YScale.Max = ((int)(YScale.Max / YScale.MajorInterval) * YScale.MajorInterval) + YScale.MajorInterval;

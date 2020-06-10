@@ -5,6 +5,13 @@ using System.Globalization;
 
 namespace NetCharts.Style
 {
+    public enum LineStyle
+    {
+        Solid = 0,
+        Dotted = 1,
+        Dashed = 2,
+    }
+
     public class ElementStyle 
     {
         /// <summary>
@@ -33,9 +40,14 @@ namespace NetCharts.Style
         public double StrokeWidth { get; set; } = 1;
 
         /// <summary>
+        /// The line style
+        /// </summary>
+        public LineStyle StrokeStyle { get; set; } = LineStyle.Solid;
+
+        /// <summary>
         /// Should element be drawn
         /// </summary>
-        public virtual bool Draw => Math.Abs(StrokeWidth) > 0 && (StrokeColor != "none" || HasFill);
+        public virtual bool Draw => StrokeWidth > 0 && (StrokeColor != "none" || HasFill);
 
         public bool HasFill => Fill != "none";
 
@@ -51,7 +63,31 @@ namespace NetCharts.Style
                 { "stroke-width", StrokeWidth.ToString(CultureInfo.InvariantCulture) },
                 { "fill-opacity", FillOpacity.ToString(CultureInfo.InvariantCulture) },
                 { "stroke-opacity", StrokeOpacity.ToString(CultureInfo.InvariantCulture) },
+                { "stroke-dasharray", DashString },
             };
+
+        private string DashString
+        {
+            get
+            {
+                switch (StrokeStyle)
+                {
+                    case LineStyle.Dotted:
+
+                        return StrokeWidth >= 1
+                            ? $"{ StrokeWidth * 2 },{ StrokeWidth * 2 }"
+                            : "1.7, 1.7";
+
+                    case LineStyle.Dashed:
+
+                        return StrokeWidth >= 1
+                            ? $"{ StrokeWidth * 5 },{ StrokeWidth * 5 }"
+                            : "5 ,5";
+                }
+
+                return "0,0";
+            }
+        }
 
         internal ElementStyle()
         {
