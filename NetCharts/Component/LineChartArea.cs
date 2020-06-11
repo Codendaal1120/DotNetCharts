@@ -91,16 +91,23 @@ namespace NetCharts.Component
                     ? "y-major-grid-line" 
                     : "y-minor-grid-line";
 
-                elements.Add(new Path(
-                    isMajor ? $"y-major--grid-{i}" : $"y-minor--grid-{i}",
-                    startPos,
-                    new[]
-                    {
-                        new StraightLine(startPos, endPos, startPos)
-                    },
-                    null,
-                    isMajor ? YGridLineStyle.MajorLineStyle : YGridLineStyle.MinorLineStyle,
-                    new[] { className, "grid-line" }));
+                var draw = isMajor
+                    ? YGridLineStyle.MajorLineStyle.Draw
+                    : YGridLineStyle.MinorLineStyle.Draw;
+
+                if (draw)
+                {
+                    elements.Add(new Path(
+                        isMajor ? $"y-major--grid-{i}" : $"y-minor--grid-{i}",
+                        startPos,
+                        new[]
+                        {
+                            new StraightLine(startPos, endPos, startPos)
+                        },
+                        null,
+                        isMajor ? YGridLineStyle.MajorLineStyle : YGridLineStyle.MinorLineStyle,
+                        new[] { className, "grid-line" }));
+                }
 
                 i += scale.MinorInterval;
             }
@@ -132,19 +139,26 @@ namespace NetCharts.Component
 
                 var className = isMajor ? "x-major-grid-line" : "x-minor-grid-line";
 
-                elements.Add(new Path(
-                    isMajor ? $"x-major--grid-{i}" : $"x-minor--grid-{i}",
-                    startPos,
-                    new[]
-                    {
-                        new StraightLine(startPos, endPos, startPos)
-                    }, 
-                    null,
-                    isMajor 
-                        ? XGridLineStyle.MajorLineStyle 
-                        : XGridLineStyle.MinorLineStyle,
-                    new[] { className, "grid-line" })
-                );
+                var draw = isMajor
+                    ? YGridLineStyle.MajorLineStyle.Draw
+                    : YGridLineStyle.MinorLineStyle.Draw;
+
+                if (draw)
+                {
+                    elements.Add(new Path(
+                        isMajor ? $"x-major--grid-{i}" : $"x-minor--grid-{i}",
+                        startPos,
+                        new[]
+                        {
+                            new StraightLine(startPos, endPos, startPos)
+                        },
+                        null,
+                        isMajor
+                            ? XGridLineStyle.MajorLineStyle
+                            : XGridLineStyle.MinorLineStyle,
+                        new[] { className, "grid-line" })
+                    );
+                }
 
                 i += scale.MinorInterval;
                 isMajor = !isMajor;
