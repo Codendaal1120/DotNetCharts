@@ -38,8 +38,16 @@ namespace NetCharts.Test
         public void CanCreateChartFromJson(ChartSeries[] series, string[] labels)
         {
             PrintTestDetails();
-            var chart = new LineChart(series, labels) { Height = 600, Width = 1000, 
-                YAxis = { LabelStyle = { Size = 11, Font = "Algerian" } }
+            var chart = new LineChart(series, labels) 
+            { 
+                Height = 600, 
+                Width = 1000,
+                YAxis =
+                {
+                    LabelStyle = { Size = 11, Font = "Algerian" },
+                    MinorTickStyle = { StrokeWidth = 0.25, Length = 3 },
+                    MajorTickStyle = { StrokeWidth = 1, Length = 5 }
+                },
             };
             var svg = chart.ToSvg();
             //WriteFileOut(chart.ToSvg(), TestContext.CurrentContext.Test.Name);

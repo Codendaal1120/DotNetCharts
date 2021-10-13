@@ -173,13 +173,15 @@ namespace NetCharts
                 YScale.MajorInterval *= 2;
             }
 
-            YScale.MinorInterval = YScale.MinorInterval <= 0 
-                ? Math.Round(YScale.MajorInterval / 10, 0) 
-                : YScale.MinorInterval;
+            var rounding = 0;
+            if (YScale.MajorInterval < 10)
+            {
+                rounding = 2;
+            }
 
+            YScale.MinorInterval = Math.Round(YScale.MajorInterval / 10, rounding);
             YScale.Max = ((int)(YScale.Max / YScale.MajorInterval) * YScale.MajorInterval) + YScale.MajorInterval;
             YScale.Max += YScale.StartOnMajor ? YScale.MinorInterval : 0;
-
             YScale.Scale = (ChartArea.Height) / YScale.Max;
         }
 

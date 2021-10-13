@@ -48,7 +48,12 @@ namespace NetCharts.Component
 
             for (var i = scale.Max; i >= 0;)
             {
-                var isMinor = !labels.Contains(i.ToString(CultureInfo.InvariantCulture));
+                var iCompare = (decimal)Math.Round(i, 2);
+                if (iCompare == decimal.Zero)
+                {
+                    iCompare = (decimal)Math.Round(i, 0);
+                }
+                var isMinor = !labels.Contains(iCompare.ToString(CultureInfo.InvariantCulture));
 
                 var idLabel = isMinor 
                     ? $"{Type.ToString()}-minor-tick-{i}" 

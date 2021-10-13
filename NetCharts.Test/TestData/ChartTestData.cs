@@ -601,6 +601,7 @@ namespace NetCharts.Test.TestData
                 yield return DebugTest3();
                 yield return DebugTest4();
                 yield return DebugTest5();
+                yield return DebugTest6();
             }
         }
 
@@ -681,8 +682,30 @@ namespace NetCharts.Test.TestData
 
             var testCase = new TestCaseData(series, labels);
 
-            testCase.SetName("Debug 5 - Test dataSet");
+            testCase.SetName("Debug 5 - Weird series");
             testCase.SetDescription("Testing dataPoints");
+            return testCase;
+        }
+
+        /// <summary>
+        /// Debug : Small scale
+        /// </summary>
+        private static TestCaseData DebugTest6()
+        {
+            var series = new[]
+            {
+                new ChartSeries("Usage", new double?[]{ null, null, null, null, null, null, null, null, 2, 6, 0, 1, 5, 19 }),
+            };
+
+            var labels = new[]
+            {
+                "Apr 2019","May 2019","Jun 2019","Jul 2019","Aug 2019","Sep 2019","Oct 2019","Nov 2019","Dec 2019","Jan 2020","Feb 2020","Mar 2020","Apr 2020","May 2020"
+            };
+
+            var testCase = new TestCaseData(series, labels);
+
+            testCase.SetName("Debug 6 - Small scale");
+            testCase.SetDescription("Testing small scale with minor interval less than 1");
             return testCase;
         }
 
