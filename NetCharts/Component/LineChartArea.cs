@@ -183,6 +183,11 @@ namespace NetCharts.Component
 
             foreach (var series in Series)
             {
+                if (!series.DataPoints.Any())
+                {
+                    continue;
+                }
+
                 var curves = GetCurves(series.DataPoints);
                 StraightLine[] fillLines = null;
 
@@ -205,6 +210,11 @@ namespace NetCharts.Component
 
             foreach (var series in Series)
             {
+                if (!series.DataPoints.Any())
+                {
+                    continue;
+                }
+
                 var lines = GetLines(series.DataPoints);
                 StraightLine[] fillLines = null;
 
@@ -359,14 +369,25 @@ namespace NetCharts.Component
         private StraightLine[] GetLines(DataPoint[] dataPoints)
         {
             var lines = new List<StraightLine>();
+
+            if (dataPoints.Length == 1)
+            {
+                var line = new StraightLine(
+                    dataPoints[0],
+                    dataPoints[0],
+                    dataPoints[0]);
+
+                lines.Add(line);
+            }
+
             for (var i = 1; i < dataPoints.Length; i++)
             {
-                var curve = new StraightLine(
+                var line = new StraightLine(
                     dataPoints[i - 1],
                     dataPoints[i],
                     dataPoints[dataPoints.Length - 1]);
 
-                lines.Add(curve);
+                lines.Add(line);
             }
 
             //if (style.HasFill)

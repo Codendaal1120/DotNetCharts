@@ -633,8 +633,11 @@ namespace NetCharts.Test.TestData
                 yield return DebugTest4();
                 yield return DebugTest5();
                 yield return DebugTest6();
+                yield return DebugTest7();
             }
         }
+
+ 
 
         /// <summary>
         /// Debug: 1 Axis Labels not centered
@@ -739,6 +742,22 @@ namespace NetCharts.Test.TestData
             testCase.SetDescription("Testing small scale with minor interval less than 1");
             return testCase;
         }
+
+        /// <summary>
+        /// Debug : Exception
+        /// </summary>
+        private static TestCaseData DebugTest7()
+        {
+            var series = JsonConvert.DeserializeObject<ChartSeries[]>("[\r\n  {\r\n    \"seriesName\": \"Oscorp\",\r\n    \"dataValues\": [\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      50.0,\r\n      null\r\n    ],\r\n    \"dataPoints\": [],\r\n    \"style\": null,\r\n    \"color\": null\r\n  },\r\n  {\r\n    \"seriesName\": \"Dharma Initiative\",\r\n    \"dataValues\": [\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      5514.0,\r\n      8735.0,\r\n      10198.0,\r\n      7319.0,\r\n      8594.0,\r\n      7277.0,\r\n      6991.0,\r\n      7827.0\r\n    ],\r\n    \"dataPoints\": [],\r\n    \"style\": null,\r\n    \"color\": null\r\n  }\r\n]");
+            var labels = JsonConvert.DeserializeObject<string[]>("[\r\n  \"Oct 2020\",\r\n  \"Nov 2020\",\r\n  \"Dec 2020\",\r\n  \"Jan 2021\",\r\n  \"Feb 2021\",\r\n  \"Mar 2021\",\r\n  \"Apr 2021\",\r\n  \"May 2021\",\r\n  \"Jun 2021\",\r\n  \"Jul 2021\",\r\n  \"Aug 2021\",\r\n  \"Sep 2021\"\r\n]");
+
+            var testCase = new TestCaseData(series, labels);
+
+            testCase.SetName("Debug 7 Exception debug");
+            testCase.SetDescription("Debug 7 Exception debug");
+            return testCase;
+        }
+
 
         #endregion Debug
 

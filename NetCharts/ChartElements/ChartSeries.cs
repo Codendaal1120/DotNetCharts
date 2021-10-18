@@ -12,7 +12,7 @@ namespace NetCharts.ChartElements
         public double?[] DataValues { get; }
         public DataPoint[] DataPoints => _dataPoints != null && _dataPoints.Any()
             ? _dataPoints
-            : new DataPoint[0];
+            : Array.Empty<DataPoint>();
 
         public SeriesStyle Style { get; set; }
 
@@ -41,12 +41,7 @@ namespace NetCharts.ChartElements
                     dataStarted = true;
                 }
 
-                //look forward. if the null count is equal to the number of items remaining, it means the rest are nulls
-                if (dataStarted)
-                {
-                    var nullCount = DataValues.Skip(i -1).Count(v => v == null);
-                    dataStarted = nullCount != DataValues.Length - i;
-                }
+      
 
                 if (!dataStarted) continue;
 
@@ -66,6 +61,10 @@ namespace NetCharts.ChartElements
                     offSetY - (DataValues[i].Value * scaleY), 
                     (i + 1).ToString(), 
                     DataValues[i].Value.ToString(CultureInfo.InvariantCulture)));
+
+                //look forward. if the null count is equal to the number of items remaining, it means the rest are nulls
+                var nullCount = DataValues.Skip(i - 1).Count(v => v == null);
+                dataStarted = nullCount != DataValues.Length - i;
             }
 
             _dataPoints = dataList.ToArray();

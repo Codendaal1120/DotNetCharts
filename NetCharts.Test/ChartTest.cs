@@ -38,7 +38,7 @@ namespace NetCharts.Test
         public void CanCreateChartFromJson(ChartSeries[] series, string[] labels)
         {
             PrintTestDetails();
-            var chart = new LineChart(series, labels) 
+            var chart = new LineChart(series, labels, true) 
             { 
                 Height = 600, 
                 Width = 1000,
@@ -50,10 +50,10 @@ namespace NetCharts.Test
                 },
             };
             var svg = chart.ToSvg();
-            //WriteFileOut(chart.ToSvg(), TestContext.CurrentContext.Test.Name);
+            //WriteFileOut(svg, TestContext.CurrentContext.Test.Name);
             Assert.IsNotNull(svg);
         }
-
+        
         #endregion
 
         private void WriteFileOut(string xml, string name)
