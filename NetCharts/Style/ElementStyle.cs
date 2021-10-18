@@ -37,7 +37,7 @@ namespace NetCharts.Style
         /// <summary>
         /// Width of the stroke
         /// </summary>
-        public double StrokeWidth { get; set; } = 1;
+        public virtual double StrokeWidth { get; set; } = 1;
 
         /// <summary>
         /// The line style

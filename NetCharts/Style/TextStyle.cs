@@ -8,11 +8,11 @@ namespace NetCharts.Style
         /// <summary>
         /// Should element be drawn
         /// </summary>
-        public new bool Draw => Fill != "none" && Size > 0;
+        public override bool Draw => Fill != "none" && Size > 0;
 
         public string Font = "Arial";
 
-        public new int StrokeWidth => 0;
+        public override double StrokeWidth => 1;
 
         /// <summary>
         /// The character size
