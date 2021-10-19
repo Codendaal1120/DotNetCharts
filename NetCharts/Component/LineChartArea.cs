@@ -328,6 +328,19 @@ namespace NetCharts.Component
         {
             var lastIndex = dataPoints.Length - 1;
             var curves = new List<CurvedLine>();
+
+            if (dataPoints.Length == 1)
+            {
+                var curve = new CurvedLine(
+                     dataPoints[0],
+                    dataPoints[0],
+                    dataPoints[0],
+                    dataPoints[0],
+                    dataPoints[0]);
+
+                curves.Add(curve);
+            }
+
             for (var i = 1; i < dataPoints.Length; i++)
             {
                 var curve = new CurvedLine(

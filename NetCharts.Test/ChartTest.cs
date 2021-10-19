@@ -18,7 +18,7 @@ namespace NetCharts.Test
         {
             PrintTestDetails();
             var xml = chart.ToSvg();
-            //WriteFileOut(xml, TestContext.CurrentContext.Test.Name);
+            WriteFileOut(xml, TestContext.CurrentContext.Test.Name);
             return xml;
         }
 
@@ -32,10 +32,11 @@ namespace NetCharts.Test
             Assert.That((ActualValueDelegate<object>) TestDelegate, Throws.TypeOf<ArgumentNullException>());
         }
 
-        private static IEnumerable<TestCaseData> CanCreateChartFromJsonSource => ChartTestData.DebugTestData;
+        private static IEnumerable<TestCaseData> DebugData1 => ChartTestData.DebugTestData1;
+        private static IEnumerable<TestCaseData> DebugData2 => ChartTestData.DebugTestData2;
 
-        [TestCaseSource(nameof(CanCreateChartFromJsonSource))]
-        public void CanCreateChartFromJson(ChartSeries[] series, string[] labels)
+        [TestCaseSource(nameof(DebugData1))]
+        public void DebugTest1(ChartSeries[] series, string[] labels)
         {
             PrintTestDetails();
             var chart = new LineChart(series, labels, true) 
@@ -53,7 +54,17 @@ namespace NetCharts.Test
             //WriteFileOut(svg, TestContext.CurrentContext.Test.Name);
             Assert.IsNotNull(svg);
         }
-        
+
+
+        [TestCaseSource(nameof(DebugData2))]
+        public void DebugTest2(Chart chart)
+        {
+            PrintTestDetails();
+            var svg = chart.ToSvg();
+            WriteFileOut(svg, TestContext.CurrentContext.Test.Name);
+            Assert.IsNotNull(svg);
+        }
+
         #endregion
 
         private void WriteFileOut(string xml, string name)

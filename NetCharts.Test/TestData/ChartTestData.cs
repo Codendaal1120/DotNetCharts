@@ -36,6 +36,7 @@ namespace NetCharts.Test.TestData
                 yield return DocumentationSample3();
                 yield return DocumentationSample4();
                 yield return LineChartDataWithDifferentFont();
+                yield return LineChartWithSingleDataPoint();
             }
         }
 
@@ -392,6 +393,49 @@ namespace NetCharts.Test.TestData
         }
 
         /// <summary>
+        /// Test case 14
+        /// </summary>
+        private static TestCaseData LineChartWithSingleDataPoint()
+        {
+            var series = new[]
+            {
+                new ChartSeries("Series1", new double?[]
+                {
+                    null,
+                    null,
+                    null,
+                    null,
+                    5,
+                    null,
+                    null
+                })
+            };
+
+            var labels = new[]
+            {
+                "One",
+                "Two",
+                "Three",
+                "Four",
+                "Five",
+                "Six",
+                "Seven"
+            };
+
+            var chart = new LineChart(series, labels, true)
+            {
+               
+            };
+
+            var testCase = new TestCaseData(chart);
+
+            testCase.SetName("TestCase 14 - Test with single data point");
+            testCase.SetDescription("Test case 14 : line chart with 1 data point");
+            testCase.ExpectedResult = GetExpectedResults("TestCase-14.xml");
+            return testCase;
+        }
+
+        /// <summary>
         /// Test case 20
         /// </summary>
         private static TestCaseData DocumentationSample1()
@@ -623,22 +667,20 @@ namespace NetCharts.Test.TestData
 
         #region Debug
 
-        public static IEnumerable<TestCaseData> DebugTestData
+        public static IEnumerable<TestCaseData> DebugTestData1
         {
             get
             {
                 yield return DebugXAxisLabels();
                 yield return DebugPartialSeriesJoining();
+                yield return DebugPartialSeriesJoining();
                 yield return DebugTest3();
                 yield return DebugTest4();
                 yield return DebugTest5();
                 yield return DebugTest6();
-                yield return DebugTest7();
             }
         }
-
- 
-
+        
         /// <summary>
         /// Debug: 1 Axis Labels not centered
         /// </summary>
@@ -668,6 +710,8 @@ namespace NetCharts.Test.TestData
             testCase.SetDescription("Debug 2 - 2 partial series needs to appear like a single line, but the first series adds 0 instead of nulls at the end");
             return testCase;
         }
+
+
 
         /// <summary>
         /// Debug: Argument exception
@@ -743,6 +787,14 @@ namespace NetCharts.Test.TestData
             return testCase;
         }
 
+        public static IEnumerable<TestCaseData> DebugTestData2
+        {
+            get
+            {
+                yield return DebugTest7();
+            }
+        }
+
         /// <summary>
         /// Debug : Exception
         /// </summary>
@@ -751,13 +803,42 @@ namespace NetCharts.Test.TestData
             var series = JsonConvert.DeserializeObject<ChartSeries[]>("[\r\n  {\r\n    \"seriesName\": \"Oscorp\",\r\n    \"dataValues\": [\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      50.0,\r\n      null\r\n    ],\r\n    \"dataPoints\": [],\r\n    \"style\": null,\r\n    \"color\": null\r\n  },\r\n  {\r\n    \"seriesName\": \"Dharma Initiative\",\r\n    \"dataValues\": [\r\n      null,\r\n      null,\r\n      null,\r\n      null,\r\n      5514.0,\r\n      8735.0,\r\n      10198.0,\r\n      7319.0,\r\n      8594.0,\r\n      7277.0,\r\n      6991.0,\r\n      7827.0\r\n    ],\r\n    \"dataPoints\": [],\r\n    \"style\": null,\r\n    \"color\": null\r\n  }\r\n]");
             var labels = JsonConvert.DeserializeObject<string[]>("[\r\n  \"Oct 2020\",\r\n  \"Nov 2020\",\r\n  \"Dec 2020\",\r\n  \"Jan 2021\",\r\n  \"Feb 2021\",\r\n  \"Mar 2021\",\r\n  \"Apr 2021\",\r\n  \"May 2021\",\r\n  \"Jun 2021\",\r\n  \"Jul 2021\",\r\n  \"Aug 2021\",\r\n  \"Sep 2021\"\r\n]");
 
-            var testCase = new TestCaseData(series, labels);
+            var chart = new LineChart(series, labels, true)
+            {
+                //BackgroundColor = "white",
+                Height = 333,
+                Width = 700,
+                PaddingTop = 20,
+                LineType = LineType.Curved,
+                ChartArea =
+                {
+                    YGridLineStyle =
+                    {
+                        MajorLineStyle = { StrokeWidth = 0.5, StrokeColor = "grey", StrokeStyle = LineStyle.Dashed},
+                        MinorLineStyle = { StrokeWidth = 0 }
+                    }
+                },
+                XAxis =
+                {
+                    LabelStyle = { Size = 11, Fill = "#383838", Font = "Helvetica" },
+                    MajorTickStyle = { StrokeWidth = 1, Length = 5, StrokeColor = "#383838" },
+                    BaseLineStyle = { StrokeWidth = 0.5, StrokeColor = "#383838" },
+                },
+                YAxis =
+                {
+                    LabelStyle = { Size = 14, Fill = "#383838", Font = "Helvetica"},
+                    MajorTickStyle = { StrokeWidth = 1, Length = 5, StrokeColor = "#383838" },
+                    BaseLineStyle = { StrokeWidth = 1, StrokeColor = "#383838" }
+                },
+                Legend = { LabelStyle = { Size = 12, Fill = "#383838", Font = "Helvetica" } }
+            };
+
+            var testCase = new TestCaseData(chart);
 
             testCase.SetName("Debug 7 Exception debug");
             testCase.SetDescription("Debug 7 Exception debug");
             return testCase;
         }
-
 
         #endregion Debug
 

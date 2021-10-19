@@ -32,39 +32,42 @@ namespace NetCharts.ChartElements
         /// </summary>
         internal void InitDataPoints(double scaleX, double scaleY, double offSetX, double offSetY)
         {
-            var dataStarted = false;
+            var add = false;
             var dataList = new List<DataPoint>();
             for (var i = 0; i < DataValues.Length; i++)
             {
-                if (!dataStarted && DataValues[i].HasValue)
+                if (DataValues[i].HasValue)
                 {
-                    dataStarted = true;
-                }
-
-      
-
-                if (!dataStarted) continue;
-
-                if (!DataValues[i].HasValue)
-                {
+                    add = true;
                     dataList.Add(new DataPoint(
                         (i * scaleX) + offSetX,
-                        offSetY - (0 * scaleY),
+                        offSetY - (DataValues[i].Value * scaleY),
                         (i + 1).ToString(),
-                        "0"));
+                        DataValues[i].Value.ToString(CultureInfo.InvariantCulture)));
 
                     continue;
                 }
 
-                dataList.Add(new DataPoint(
-                    (i * scaleX) + offSetX, 
-                    offSetY - (DataValues[i].Value * scaleY), 
-                    (i + 1).ToString(), 
-                    DataValues[i].Value.ToString(CultureInfo.InvariantCulture)));
+                if (!add)
+                {
+                    // we only start adding data after the first valid value
+                    continue;
+                }
 
                 //look forward. if the null count is equal to the number of items remaining, it means the rest are nulls
                 var nullCount = DataValues.Skip(i - 1).Count(v => v == null);
-                dataStarted = nullCount != DataValues.Length - i;
+                if (nullCount == DataValues.Length - i)
+                {
+                    continue;
+                }
+
+                // Add a 0 data point
+                dataList.Add(new DataPoint(
+                    (i * scaleX) + offSetX,
+                    offSetY - (0 * scaleY),
+                    (i + 1).ToString(),
+                    "0"));
+
             }
 
             _dataPoints = dataList.ToArray();
