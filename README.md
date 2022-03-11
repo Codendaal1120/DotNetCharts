@@ -1,4 +1,4 @@
-# NetChart
+# DotNetChart
 A server side SVG chart library.
 
  This project started as I had a requirements to generate charts in the background, which could be embedded into a PDF document. The only solutions I found relied on either a JS rendering engine or a reporting engine like Crystal or Reporting services. I wanted a solution to generate charts, which was HTML compatible without using any front-end technologies or fancy libraries.
@@ -9,7 +9,7 @@ This project uses only **System.Drawing**  to generate a SVG output, which could
 
 ## Gallery
  
-![gallery](https://raw.githubusercontent.com/Codendaal1120/NetCharts/master/Documentation/images/gallery.png)
+![gallery](https://raw.githubusercontent.com/Codendaal1120/DotNetChart/master/Documentation/images/gallery.png)
 
 ## Roadmap
 *Take note that this project is a **WIP** and currently only line charts are supported*
@@ -40,7 +40,7 @@ var chart = new LineChart(series , labels )
 var xml = chart.ToSvg();
 ```
 
- ![This will produce](https://raw.githubusercontent.com/Codendaal1120/NetCharts/master/Documentation/images/default_chart.PNG)
+ ![This will produce](https://raw.githubusercontent.com/Codendaal1120/DotNetChart/master/Documentation/images/default_chart.PNG)
 
-Consult the [Customization guide](https://github.com/Codendaal1120/NetCharts/wiki/Chart-customization-guide) for information on customization options.
+Consult the [Customization guide](https://github.com/Codendaal1120/DotNetChart/wiki/Chart-customization-guide) for information on customization options.
 
