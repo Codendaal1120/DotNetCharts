@@ -42,5 +42,5 @@ var xml = chart.ToSvg();
 
  ![This will produce](https://github.com/Codendaal1120/DotNetCharts/blob/master/Documentation/images/default_chart.PNG)
 
-Consult the [Customization guide](https://github.com/Codendaal1120/DotNetChart/wiki/Chart-customization-guide) for information on customization options.
+Consult the [Customization guide](https://github.com/Codendaal1120/DotNetCharts/wiki/Chart-customization-guide) for information on customization options.
 
