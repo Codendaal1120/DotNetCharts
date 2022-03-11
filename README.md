@@ -40,7 +40,7 @@ var chart = new LineChart(series , labels )
 var xml = chart.ToSvg();
 ```
 
- ![This will produce](https://raw.githubusercontent.com/Codendaal1120/DotNetChart/master/Documentation/images/default_chart.PNG)
+ ![This will produce](https://github.com/Codendaal1120/DotNetCharts/blob/master/Documentation/images/default_chart.PNG)
 
 Consult the [Customization guide](https://github.com/Codendaal1120/DotNetChart/wiki/Chart-customization-guide) for information on customization options.
 
