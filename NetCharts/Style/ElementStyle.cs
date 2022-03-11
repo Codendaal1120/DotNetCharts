@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 
-namespace NetCharts.Style
+namespace DotNetCharts.Style
 {
     public enum LineStyle
     {

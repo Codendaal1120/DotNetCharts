@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using NetCharts.Style;
-using NetCharts.Svg;
+using DotNetCharts.Style;
+using DotNetCharts.Svg;
 
-namespace NetCharts.Component
+namespace DotNetCharts.Component
 {
     public class Title
     {

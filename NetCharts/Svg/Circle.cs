@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
 using System.Xml;
-using NetCharts.Style;
+using DotNetCharts.Style;
 
-namespace NetCharts.Svg
+namespace DotNetCharts.Svg
 {
     internal class Circle : Element
     {

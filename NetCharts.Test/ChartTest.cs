@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using NetCharts.ChartElements;
-using NetCharts.Test.TestData;
+using DotNetCharts.ChartElements;
+using DotNetCharts.Test.TestData;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
 
-namespace NetCharts.Test
+namespace DotNetCharts.Test
 {
     internal class Tests
     {

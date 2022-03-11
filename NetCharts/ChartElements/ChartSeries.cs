@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using NetCharts.Style;
+using DotNetCharts.Style;
 
-namespace NetCharts.ChartElements
+namespace DotNetCharts.ChartElements
 {
     public class ChartSeries
     {

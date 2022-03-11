@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using NetCharts.ChartElements;
-using NetCharts.Component;
-using NetCharts.Style;
+using DotNetCharts.ChartElements;
+using DotNetCharts.Component;
+using DotNetCharts.Style;
 using Newtonsoft.Json;
 using NUnit.Framework;
 
-namespace NetCharts.Test.TestData
+namespace DotNetCharts.Test.TestData
 {
     internal static class ChartTestData
     {

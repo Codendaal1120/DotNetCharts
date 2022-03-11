@@ -1,4 +1,4 @@
-﻿namespace NetCharts.Svg
+﻿namespace DotNetCharts.Svg
 {
     internal class ViewBox 
     {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.Json;
-using NetCharts.ChartElements;
-using NetCharts.Component;
-using NetCharts.Svg;
+using DotNetCharts.ChartElements;
+using DotNetCharts.Component;
+using DotNetCharts.Svg;
 
-namespace NetCharts
+namespace DotNetCharts
 {
     public class LineChart : Chart
     {

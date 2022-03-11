@@ -1,4 +1,4 @@
-﻿namespace NetCharts.Component
+﻿namespace DotNetCharts.Component
 {
     public enum LegendIcon
     {

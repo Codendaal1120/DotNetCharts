@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using NetCharts.ChartElements;
-using NetCharts.Component;
-using NetCharts.Style;
-using NetCharts.Svg;
+using DotNetCharts.ChartElements;
+using DotNetCharts.Component;
+using DotNetCharts.Style;
+using DotNetCharts.Svg;
 
-namespace NetCharts
+namespace DotNetCharts
 {
     public abstract class Chart
     {

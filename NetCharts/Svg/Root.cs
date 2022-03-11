@@ -8,7 +8,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace NetCharts.Svg
+namespace DotNetCharts.Svg
 {
     //https://www.w3.org/TR/SVG/paths.html#PathDataLinetoCommands
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NetCharts.ChartElements
+namespace DotNetCharts.ChartElements
 {
     /// <summary>
     /// Represents a data point on a chart

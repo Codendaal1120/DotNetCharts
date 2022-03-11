@@ -1,4 +1,4 @@
-﻿namespace NetCharts.ChartElements
+﻿namespace DotNetCharts.ChartElements
 {
     public enum AxisType
     {

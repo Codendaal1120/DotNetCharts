@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NetCharts.ChartElements;
-using NetCharts.Style;
-using NetCharts.Svg;
+using DotNetCharts.ChartElements;
+using DotNetCharts.Style;
+using DotNetCharts.Svg;
 
-namespace NetCharts.Component
+namespace DotNetCharts.Component
 {
     public class Legend
     {

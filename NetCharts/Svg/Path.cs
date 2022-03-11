@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Xml;
-using NetCharts.ChartElements;
-using NetCharts.Style;
+using DotNetCharts.ChartElements;
+using DotNetCharts.Style;
 
-namespace NetCharts.Svg
+namespace DotNetCharts.Svg
 {
     internal class Path : Element
     {

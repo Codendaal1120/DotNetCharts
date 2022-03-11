@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NetCharts.Style
+namespace DotNetCharts.Style
 {
     public enum LegendPosition
     {

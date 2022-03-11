@@ -1,4 +1,4 @@
-﻿namespace NetCharts.ChartElements
+﻿namespace DotNetCharts.ChartElements
 {
     /// <summary>
     /// Represents a graph line between two data points

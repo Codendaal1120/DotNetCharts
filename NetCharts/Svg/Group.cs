@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
-using NetCharts.Style;
+using DotNetCharts.Style;
 
-namespace NetCharts.Svg
+namespace DotNetCharts.Svg
 {
     [XmlRoot(ElementName = "g")]
     internal class Group : Element

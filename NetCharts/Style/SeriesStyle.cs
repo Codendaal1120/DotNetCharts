@@ -1,4 +1,4 @@
-﻿namespace NetCharts.Style
+﻿namespace DotNetCharts.Style
 {
     public class SeriesStyle
     {

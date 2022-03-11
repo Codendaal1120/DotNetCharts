@@ -1,4 +1,4 @@
-﻿namespace NetCharts
+﻿namespace DotNetCharts
 {
     public enum LineType
     {

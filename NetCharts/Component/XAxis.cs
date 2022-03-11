@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NetCharts.ChartElements;
-using NetCharts.Svg;
+using DotNetCharts.ChartElements;
+using DotNetCharts.Svg;
 
-namespace NetCharts.Component
+namespace DotNetCharts.Component
 {
     public sealed class XAxis : Axis
     {

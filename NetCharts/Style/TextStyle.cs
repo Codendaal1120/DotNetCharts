@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace NetCharts.Style
+namespace DotNetCharts.Style
 {
     public class TextStyle : ElementStyle
     {

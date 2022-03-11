@@ -4,9 +4,9 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using NetCharts.Style;
+using DotNetCharts.Style;
 
-namespace NetCharts.Svg
+namespace DotNetCharts.Svg
 {
     internal abstract class Element : IXmlSerializable
     {
