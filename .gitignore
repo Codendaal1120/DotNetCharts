@@ -8,3 +8,5 @@
 obj
 Debug
 /NetCharts.Test/bin/Release/netcoreapp3.1
+/DotNetCharts/bin/Release
+/DotNetCharts.Test/bin/Release/netcoreapp3.1

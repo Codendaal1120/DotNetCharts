@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DotNetCharts\DotNetCharts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="ExpectedResults\TestCase-1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
